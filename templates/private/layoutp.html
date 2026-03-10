@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>{% block title %}Dashboard{% endblock %}</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Dashboard{% endblock %}</title>
 
-    {% block page_css %}{% endblock %}
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/private/navbar.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/private/app.css') }}">
-    <script src="{{ url_for('static', filename='js/sidebar.js') }}"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/private/navbar.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/private/dashboard.css') }}">
+  {% block page_css %}{% endblock %}
 </head>
-<body class="layout">
+<body>
 
+  <div class="dash-layout">
     {% include "private/navbar.html" %}
 
-    <main class="main-content">
-        {% block content %}{% endblock %}
-    </main>
+    <div class="dash-main" id="dashMain">
+      {% block content %}{% endblock %}
+    </div>
+  </div>
 
-
+  <!-- JS al final del body, después del DOM -->
+  <script src="{{ url_for('static', filename='js/sidebar.js') }}"></script>
 </body>
 </html>
