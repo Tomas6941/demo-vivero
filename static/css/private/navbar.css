@@ -1,43 +1,12 @@
 /* ================================================================
-<<<<<<< HEAD
-   NAVBAR.CSS — Sidebar responsive
-   Desktop: aparece al acercar cursor al borde izquierdo
-   Móvil/táctil: botón hamburguesa fijo + overlay
-=======
    NAVBAR.CSS (privada) — Sidebar responsive
    Desktop : hover en borde izquierdo
    Móvil   : botón hamburguesa fijo
->>>>>>> b6670ae (Subo archivos modificados para mejor responsive)
    ================================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=DM+Sans:wght@300;400;500&display=swap');
 
 :root {
-<<<<<<< HEAD
-  --sidebar-w:       240px;
-  --sidebar-bg:      rgba(10, 16, 5, 0.98);
-  --acento:          #a8d44f;
-  --acento-dim:      rgba(168, 212, 79, 0.5);
-  --verde-medio:     #3D5026;
-  --texto:           #ddedb8;
-  --texto-dim:       rgba(200, 220, 160, 0.65);
-  --texto-muted:     rgba(160, 185, 110, 0.42);
-  --borde:           rgba(122, 179, 58, 0.13);
-  --rojo:            #e05858;
-  --ease-sidebar:    0.28s cubic-bezier(.4,0,.2,1);
-}
-
-/* ════════════════════════════════
-   SIDEBAR BASE
-   ════════════════════════════════ */
-.sidebar {
-  position: fixed;
-  top: 0; left: 0;
-  width: var(--sidebar-w);
-  height: 100%;          /* 100% en lugar de 100vh evita el bug de altura en móvil */
-  height: 100dvh;        /* dynamic viewport height — respeta barras de navegador */
-  background: var(--sidebar-bg);
-=======
   --sw:          240px;   /* sidebar width */
   --sbg:         rgba(10, 16, 5, 0.98);
   --acento:      #a8d44f;
@@ -94,44 +63,27 @@ body {
   width: var(--sw);
   height: 100dvh;
   background: var(--sbg);
->>>>>>> b6670ae (Subo archivos modificados para mejor responsive)
   border-right: 1px solid var(--borde);
   display: flex;
   flex-direction: column;
   z-index: 300;
   overflow: hidden;
-<<<<<<< HEAD
-  /* Colapsada por defecto en desktop */
-  transform: translateX(calc(-1 * var(--sidebar-w) + 4px));
-  transition: transform var(--ease-sidebar), box-shadow var(--ease-sidebar);
-}
-
-/* Línea brillante superior */
-=======
   /* Colapsado: solo asoma 4px */
   transform: translateX(calc(-1 * var(--sw) + 4px));
   transition: transform var(--ease), box-shadow var(--ease);
 }
 
 /* Brillo top */
->>>>>>> b6670ae (Subo archivos modificados para mejor responsive)
 .sidebar::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; height: 1px;
   background: linear-gradient(to right, transparent, var(--acento-dim), transparent);
   opacity: 0;
-<<<<<<< HEAD
-  transition: opacity var(--ease-sidebar);
-}
-
-/* Indicador pulsante en el borde cuando está cerrada */
-=======
   transition: opacity var(--ease);
 }
 
 /* Pulso en el borde cuando está cerrado */
->>>>>>> b6670ae (Subo archivos modificados para mejor responsive)
 .sidebar::after {
   content: '';
   position: absolute;
@@ -140,26 +92,6 @@ body {
   width: 3px; height: 56px;
   background: linear-gradient(to bottom, transparent, var(--acento-dim), transparent);
   border-radius: 2px;
-<<<<<<< HEAD
-  animation: pulse-edge 2.5s ease-in-out infinite;
-  transition: opacity var(--ease-sidebar);
-}
-
-@keyframes pulse-edge {
-  0%,100% { opacity: .25; }
-  50%      { opacity: .85; }
-}
-
-/* Estado expandido */
-.sidebar.expanded {
-  transform: translateX(0);
-  box-shadow: 8px 0 48px rgba(0,0,0,0.6);
-}
-.sidebar.expanded::before { opacity: 1; }
-.sidebar.expanded::after  { opacity: 0; animation: none; }
-
-/* Fade del contenido */
-=======
   animation: pulseEdge 2.5s ease-in-out infinite;
 }
 
@@ -180,7 +112,6 @@ body {
 .sidebar:hover::after  { opacity: 0; animation: none; }
 
 /* Fade del contenido interno */
->>>>>>> b6670ae (Subo archivos modificados para mejor responsive)
 .sidebar-logo,
 .sidebar-nav,
 .sidebar-footer {
@@ -197,22 +128,6 @@ body {
   transition-delay: 0.1s;
 }
 
-<<<<<<< HEAD
-/* ── Trigger hover desktop ── */
-.sidebar-trigger {
-  position: fixed;
-  top: 0; left: 0;
-  width: 18px;
-  height: 100%;
-  z-index: 301;
-}
-
-/* ════════════════════════════════
-   BOTÓN HAMBURGUESA (solo móvil)
-   ════════════════════════════════ */
-.sidebar-toggle {
-  display: none; /* oculto en desktop */
-=======
 /* Trigger invisible desktop */
 .sidebar-trigger {
   position: fixed;
@@ -228,16 +143,11 @@ body {
    ════════════════════════ */
 .sidebar-toggle {
   display: none;
->>>>>>> b6670ae (Subo archivos modificados para mejor responsive)
   position: fixed;
   top: 14px; left: 14px;
   z-index: 400;
   width: 42px; height: 42px;
-<<<<<<< HEAD
-  background: rgba(10,16,5,0.88);
-=======
   background: rgba(10,16,5,0.9);
->>>>>>> b6670ae (Subo archivos modificados para mejor responsive)
   border: 1px solid var(--borde);
   border-radius: 10px;
   cursor: pointer;
@@ -247,11 +157,7 @@ body {
   gap: 5px;
   padding: 0;
   backdrop-filter: blur(8px);
-<<<<<<< HEAD
-  transition: background var(--ease-sidebar), border-color var(--ease-sidebar);
-=======
   transition: background var(--ease), border-color var(--ease);
->>>>>>> b6670ae (Subo archivos modificados para mejor responsive)
 }
 
 .sidebar-toggle span {
@@ -259,52 +165,21 @@ body {
   width: 20px; height: 2px;
   background: var(--texto-dim);
   border-radius: 2px;
-<<<<<<< HEAD
-  transition: transform 0.25s ease, opacity 0.2s ease, width 0.2s ease;
-  transform-origin: center;
-}
-
-/* Animación X cuando está abierto */
-=======
   transition: transform 0.25s, opacity 0.2s, width 0.2s;
   transform-origin: center;
 }
 
 .sidebar-toggle.open { background: rgba(61,80,38,0.75); border-color: var(--acento-dim); }
->>>>>>> b6670ae (Subo archivos modificados para mejor responsive)
 .sidebar-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .sidebar-toggle.open span:nth-child(2) { opacity: 0; width: 0; }
 .sidebar-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-<<<<<<< HEAD
-.sidebar-toggle.open {
-  background: rgba(61,80,38,0.7);
-  border-color: var(--acento-dim);
-}
-
-/* ── Overlay oscuro móvil ── */
-=======
 /* Overlay */
->>>>>>> b6670ae (Subo archivos modificados para mejor responsive)
 .sidebar-overlay {
   display: none;
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.55);
-<<<<<<< HEAD
-  z-index: 299;
-  backdrop-filter: blur(2px);
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-.sidebar-overlay.visible {
-  opacity: 1;
-}
-
-/* ════════════════════════════════
-   CONTENIDO DEL SIDEBAR
-   ════════════════════════════════ */
-=======
   backdrop-filter: blur(2px);
   z-index: 299;
   opacity: 0;
@@ -315,7 +190,6 @@ body {
 /* ════════════════════════
    CONTENIDO DEL SIDEBAR
    ════════════════════════ */
->>>>>>> b6670ae (Subo archivos modificados para mejor responsive)
 .sidebar-logo {
   display: flex;
   align-items: center;
@@ -338,35 +212,18 @@ body {
 
 .sidebar-logo-text {
   font-family: 'Playfair Display', serif;
-<<<<<<< HEAD
-  font-size: .98rem; font-weight: 600;
-=======
   font-size: .97rem; font-weight: 600;
->>>>>>> b6670ae (Subo archivos modificados para mejor responsive)
   color: var(--acento); line-height: 1.2;
 }
 
 .sidebar-logo-sub {
-<<<<<<< HEAD
-  font-size: .67rem;
-  color: var(--texto-muted);
-=======
   font-size: .66rem; color: var(--texto-muted);
->>>>>>> b6670ae (Subo archivos modificados para mejor responsive)
   font-weight: 300; letter-spacing: .04em;
 }
 
 .sidebar-nav {
-<<<<<<< HEAD
-  flex: 1;
-  padding: 14px 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  /* scrollbar discreta */
-=======
   flex: 1; padding: 14px 0;
   overflow-y: auto; overflow-x: hidden;
->>>>>>> b6670ae (Subo archivos modificados para mejor responsive)
   scrollbar-width: thin;
   scrollbar-color: var(--borde) transparent;
 }
@@ -390,36 +247,11 @@ body {
   transition: background .16s, color .16s, border-color .16s;
 }
 
-<<<<<<< HEAD
-.sidebar-link .s-icon {
-  font-size: 1.05rem; width: 22px;
-  text-align: center; flex-shrink: 0;
-}
-
-.sidebar-link .s-label { flex: 1; }
-
-.sidebar-link:hover {
-  color: var(--texto);
-  background: rgba(122,179,58,0.07);
-}
-
-.sidebar-link.active {
-  color: var(--acento);
-  background: rgba(122,179,58,0.10);
-  border-left-color: var(--acento);
-  font-weight: 500;
-}
-
-.sidebar-link.active .s-icon {
-  filter: drop-shadow(0 0 5px rgba(168,212,79,.5));
-}
-=======
 .sidebar-link .s-icon { font-size: 1.05rem; width: 22px; text-align: center; flex-shrink: 0; }
 .sidebar-link .s-label { flex: 1; }
 .sidebar-link:hover { color: var(--texto); background: rgba(122,179,58,0.07); }
 .sidebar-link.active { color: var(--acento); background: rgba(122,179,58,0.10); border-left-color: var(--acento); font-weight: 500; }
 .sidebar-link.active .s-icon { filter: drop-shadow(0 0 5px rgba(168,212,79,.5)); }
->>>>>>> b6670ae (Subo archivos modificados para mejor responsive)
 
 .s-badge {
   margin-left: auto;
@@ -431,19 +263,6 @@ body {
 .sidebar-footer {
   padding: 14px 18px;
   border-top: 1px solid var(--borde);
-<<<<<<< HEAD
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.sidebar-user {
-  display: flex; align-items: center; gap: 10px;
-}
-
-.sidebar-avatar {
-  width: 32px; height: 32px;
-  background: var(--verde-medio); border-radius: 50%;
-=======
   white-space: nowrap; flex-shrink: 0;
 }
 
@@ -452,7 +271,6 @@ body {
 .sidebar-avatar {
   width: 32px; height: 32px;
   background: var(--vm); border-radius: 50%;
->>>>>>> b6670ae (Subo archivos modificados para mejor responsive)
   display: flex; align-items: center; justify-content: center;
   font-size: .8rem; font-weight: 600;
   color: var(--acento); flex-shrink: 0;
@@ -462,44 +280,6 @@ body {
 .sidebar-user-name { font-size: .82rem; font-weight: 500; color: var(--texto); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sidebar-user-role { font-size: .67rem; color: var(--texto-muted); }
 
-<<<<<<< HEAD
-.sidebar-user-name {
-  font-size: .82rem; font-weight: 500; color: var(--texto);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-
-.sidebar-user-role { font-size: .67rem; color: var(--texto-muted); }
-
-.sidebar-logout {
-  color: var(--texto-muted); text-decoration: none;
-  font-size: 1rem; transition: color .18s;
-}
-.sidebar-logout:hover { color: var(--rojo); }
-
-/* ════════════════════════════════
-   RESPONSIVE
-   ════════════════════════════════ */
-
-/* Tablet y móvil */
-@media (max-width: 768px) {
-
-  /* Mostrar botón hamburguesa */
-  .sidebar-toggle {
-    display: flex;
-  }
-
-  /* Mostrar overlay cuando esté activo */
-  .sidebar-overlay {
-    display: block;
-  }
-
-  /* Ocultar el trigger de hover */
-  .sidebar-trigger {
-    display: none;
-  }
-
-  /* El sidebar entra desde la izquierda completamente */
-=======
 .sidebar-logout { color: var(--texto-muted); text-decoration: none; font-size: 1rem; transition: color .18s; }
 .sidebar-logout:hover { color: var(--rojo); }
 
@@ -507,89 +287,44 @@ body {
    RESPONSIVE
    ════════════════════════ */
 
-/* Tablet y móvil */
-@media (max-width: 768px) {
-  .sidebar-toggle  { display: flex; }
-  .sidebar-overlay { display: block; }
-  .sidebar-trigger { display: none; }
+/* ── Por defecto: botón oculto (se activa solo en touch via JS) ── */
+.sidebar-toggle  { display: none; }
+.sidebar-overlay { display: none; }
 
-  /* En móvil el sidebar entra de afuera, no desde 4px */
->>>>>>> b6670ae (Subo archivos modificados para mejor responsive)
-  .sidebar {
-    transform: translateX(-100%);
-    box-shadow: none;
-  }
-<<<<<<< HEAD
+/* ══════════════════════════════════════════════════
+   Modo TOUCH — clase agregada por JS al <html>
+   cuando se detecta dispositivo táctil real
+   ══════════════════════════════════════════════════ */
+html.is-touch .sidebar-toggle  { display: flex; }
+html.is-touch .sidebar-overlay { display: block; }
+html.is-touch .sidebar-trigger { display: none; }
+html.is-touch .dash-main       { margin-left: 0 !important; }
+html.is-touch .dash-topbar     { padding-left: 68px !important; }
 
-  .sidebar::after {
-    display: none; /* sin indicador de borde en móvil */
-  }
+/* Sidebar entra desde afuera completamente en touch */
+html.is-touch .sidebar {
+  transform: translateX(-100%);
+}
+html.is-touch .sidebar::after { display: none; }
 
-  /* Cuando está abierto en móvil */
-=======
-  .sidebar::after { display: none; }
-
->>>>>>> b6670ae (Subo archivos modificados para mejor responsive)
-  .sidebar.expanded {
-    transform: translateX(0);
-    box-shadow: 8px 0 48px rgba(0,0,0,0.65);
-  }
-<<<<<<< HEAD
-
-  /* El contenido NO ocupa margin, empieza desde 0 */
-  .dash-main {
-    margin-left: 0 !important;
-  }
-
-  /* Topbar con padding izquierdo para no solaparse con el botón */
-  .dash-topbar {
-    padding-left: 68px;
-  }
+html.is-touch .sidebar.expanded {
+  transform: translateX(0);
+  box-shadow: 8px 0 48px rgba(0,0,0,0.65);
 }
 
-/* Desktop: hover trigger activo, sin botón */
-@media (min-width: 769px) {
-  .sidebar-toggle  { display: none !important; }
-  .sidebar-overlay { display: none !important; }
-
-  .dash-main {
-    margin-left: 4px;
-  }
-
-  /* Hover directo sobre el sidebar también lo expande */
-  .sidebar:hover {
-    transform: translateX(0);
-    box-shadow: 8px 0 48px rgba(0,0,0,0.6);
-  }
-  .sidebar:hover::before { opacity: 1; }
-  .sidebar:hover::after  { opacity: 0; animation: none; }
-
-  .sidebar:hover .sidebar-logo,
-  .sidebar:hover .sidebar-nav,
-  .sidebar:hover .sidebar-footer {
-    opacity: 1;
-    transition-delay: 0.1s;
-  }
-=======
-  /* hover no aplica en táctil, solo expanded */
-  .sidebar:hover:not(.expanded) {
-    transform: translateX(-100%);
-    box-shadow: none;
-  }
-  .sidebar:hover:not(.expanded) .sidebar-logo,
-  .sidebar:hover:not(.expanded) .sidebar-nav,
-  .sidebar:hover:not(.expanded) .sidebar-footer { opacity: 0; }
-
-  .dash-main { margin-left: 0; }
-
-  /* Topbar con espacio para el botón hamburguesa */
-  .dash-topbar { padding-left: 68px !important; }
+/* Cancelar hover en touch — solo .expanded abre el sidebar */
+html.is-touch .sidebar:hover:not(.expanded) {
+  transform: translateX(-100%);
+  box-shadow: none;
+}
+html.is-touch .sidebar:hover:not(.expanded) .sidebar-logo,
+html.is-touch .sidebar:hover:not(.expanded) .sidebar-nav,
+html.is-touch .sidebar:hover:not(.expanded) .sidebar-footer {
+  opacity: 0;
+  transition-delay: 0s;
 }
 
-/* Desktop */
-@media (min-width: 769px) {
-  .sidebar-toggle  { display: none !important; }
-  .sidebar-overlay { display: none !important; }
-  .dash-main { margin-left: 4px; }
->>>>>>> b6670ae (Subo archivos modificados para mejor responsive)
-}
+/* ── Desktop (sin touch): hover funciona, sin botón ── */
+html:not(.is-touch) .sidebar-toggle  { display: none !important; }
+html:not(.is-touch) .sidebar-overlay { display: none !important; }
+html:not(.is-touch) .dash-main       { margin-left: 4px; }
