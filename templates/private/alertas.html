@@ -1,0 +1,80 @@
+{% extends "private/layoutp.html" %}
+{% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/private/dashboard.css') }}">
+{% endblock %}
+{% block content %}
+<div class="dash-topbar">
+  <div class="topbar-left">
+    <span class="topbar-page-title">Alertas</span>
+    <span class="topbar-breadcrumb">Invernadero ProA · Centro de notificaciones</span>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-pill"><span class="dot"></span>2 alertas activas</div>
+  </div>
+</div>
+
+<div class="dash-content">
+  <div class="page-heading">
+    <h1>Centro de alertas</h1>
+    <p>Notificaciones y eventos críticos del invernadero.</p>
+  </div>
+
+  <div class="alertas-list stagger">
+
+    <div class="alerta-item alerta-critical">
+      <div class="alerta-icon">🔴</div>
+      <div class="alerta-body">
+        <div class="alerta-titulo">Temperatura fuera del rango permitido</div>
+        <div class="alerta-desc">El sensor de Zona A registró 26.1 °C, superando el umbral máximo de 25 °C. Considerar activar ventilación.</div>
+      </div>
+      <div class="alerta-time">hace 5 min</div>
+    </div>
+
+    <div class="alerta-item alerta-warning">
+      <div class="alerta-icon">🟡</div>
+      <div class="alerta-body">
+        <div class="alerta-titulo">Humedad baja en Sector B</div>
+        <div class="alerta-desc">La humedad del suelo en Zona B bajó a 48%, por debajo del rango recomendado (55–75%). Se recomienda riego manual.</div>
+      </div>
+      <div class="alerta-time">hace 1 h</div>
+    </div>
+
+    <div class="alerta-item alerta-critical">
+      <div class="alerta-icon">🔴</div>
+      <div class="alerta-body">
+        <div class="alerta-titulo">Sensor de CO₂ sin señal</div>
+        <div class="alerta-desc">El nodo del sensor de CO₂ no reporta datos desde hace más de 2 horas. Verificar conexión y batería del nodo.</div>
+      </div>
+      <div class="alerta-time">hace 2 h</div>
+    </div>
+
+    <div class="alerta-item alerta-info">
+      <div class="alerta-icon">🔵</div>
+      <div class="alerta-body">
+        <div class="alerta-titulo">Riego automático ejecutado</div>
+        <div class="alerta-desc">El ciclo de riego programado se ejecutó correctamente en todas las zonas. Duración: 12 minutos.</div>
+      </div>
+      <div class="alerta-time">hace 3 h</div>
+    </div>
+
+    <div class="alerta-item alerta-ok">
+      <div class="alerta-icon">🟢</div>
+      <div class="alerta-body">
+        <div class="alerta-titulo">Sistema reiniciado correctamente</div>
+        <div class="alerta-desc">El controlador central se reinició después de la actualización de firmware v2.3.1. Todos los servicios activos.</div>
+      </div>
+      <div class="alerta-time">ayer 22:14</div>
+    </div>
+
+    <div class="alerta-item alerta-info">
+      <div class="alerta-icon">🔵</div>
+      <div class="alerta-body">
+        <div class="alerta-titulo">Albahaca lista para cosechar</div>
+        <div class="alerta-desc">El cultivo de albahaca en Zona C completó el 92% de su ciclo. Se recomienda cosecha en los próximos 3 días.</div>
+      </div>
+      <div class="alerta-time">ayer 10:00</div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

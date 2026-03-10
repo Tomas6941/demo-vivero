@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Dashboard{% endblock %}</title>
+
+    {% block page_css %}{% endblock %}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/private/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/private/app.css') }}">
+    <script src="{{ url_for('static', filename='js/sidebar.js') }}"></script>
+</head>
+<body class="layout">
+
+    {% include "private/navbar.html" %}
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+
+</body>
+</html>

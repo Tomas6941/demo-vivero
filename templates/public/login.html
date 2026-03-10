@@ -1,0 +1,59 @@
+{% extends "public/layout.html" %}
+{% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='static/css/public/login.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="login-wrapper">
+  <!-- Panel izquierdo: formulario -->
+  <div class="login-panel">
+    <div class="login-inner">
+
+      <!-- Logo -->
+      <div class="logo">
+        <svg width="36" height="28" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 14C0 6.268 6.268 0 14 0h8c7.732 0 14 6.268 14 14S29.732 28 22 28h-8C6.268 28 0 21.732 0 14z" fill="#6366f1"/>
+          <path d="M8 10h20M8 14h14M8 18h20" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div class="login-header">
+        <h1>Iniciar Sesión</h1>
+      </div>
+
+      <form action="/login" method="post" class="login-form">
+
+        <div class="campo">
+          <label for="username">Usuario</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+
+        <div class="campo">
+          <label for="password">
+            Contraseña
+          </label>
+          <input type="password" id="password" name="password" placeholder="••••••••" required>
+        </div>
+
+        <div class="remember-row">
+          <label class="checkbox-label">
+            <input type="checkbox" name="remember">
+            <span class="checkmark"></span>
+            Recordarme
+          </label>
+        </div>
+
+        <button type="submit" class="login-btn">Iniciar Sesión</button>
+
+
+      </form>
+    </div>
+  </div>
+
+  <!-- Panel derecho: imagen decorativa -->
+  <div class="login-photo">
+    <div class="photo-overlay"></div>
+  </div>
+</div>
+{% endblock %}

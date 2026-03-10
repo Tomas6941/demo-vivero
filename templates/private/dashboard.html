@@ -1,0 +1,112 @@
+{% extends "private/layoutp.html" %}
+{% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/private/dashboard.css') }}">
+{% endblock %}
+{% block content %}
+<div class="dash-topbar">
+  <div class="topbar-left">
+    <span class="topbar-page-title">Dashboard</span>
+    <span class="topbar-breadcrumb">Invernadero ProA · Vista general</span>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-pill">
+      <span class="dot"></span>
+      Sistema activo
+    </div>
+  </div>
+</div>
+
+<div class="dash-content">
+
+  <!-- Métricas principales -->
+  <div class="page-heading">
+    <h1>Resumen del invernadero</h1>
+    <p>Estado en tiempo real de todos los sistemas monitoreados.</p>
+  </div>
+
+  <div class="grid-4 stagger">
+    <div class="card card-accent metric-card">
+      <div><span class="metric-value">24</span><span class="metric-unit"> °C</span></div>
+      <div class="metric-label">Temperatura interior</div>
+      <div class="metric-trend trend-up">↑ +1.2° respecto a ayer</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:62%"></div></div>
+    </div>
+    <div class="card card-accent-blue metric-card">
+      <div><span class="metric-value">68</span><span class="metric-unit"> %</span></div>
+      <div class="metric-label">Humedad relativa</div>
+      <div class="metric-trend trend-flat">→ Estable</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:68%; background: linear-gradient(to right, #1a6080, #4fa8c8)"></div></div>
+    </div>
+    <div class="card card-accent-yellow metric-card">
+      <div><span class="metric-value">840</span><span class="metric-unit"> lux</span></div>
+      <div class="metric-label">Luminosidad</div>
+      <div class="metric-trend trend-down">↓ Nublado parcial</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:42%; background: linear-gradient(to right, #7a5500, #d4a832)"></div></div>
+    </div>
+    <div class="card card-accent metric-card">
+      <div><span class="metric-value">6</span><span class="metric-unit"> cultivos</span></div>
+      <div class="metric-label">Cultivos activos</div>
+      <div class="metric-trend trend-up">↑ 2 en floración</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div>
+    </div>
+  </div>
+
+  <hr class="dash-divider">
+
+  <!-- Grid inferior -->
+  <div class="dash-summary-grid">
+    <div class="card">
+      <div class="card-title">🔔 Alertas recientes</div>
+      <ul class="recent-list">
+        <li class="recent-item">
+          <span class="recent-dot" style="background: var(--rojo)"></span>
+          <span class="recent-text">Temperatura superó umbral máximo</span>
+          <span class="recent-time">hace 5 min</span>
+        </li>
+        <li class="recent-item">
+          <span class="recent-dot" style="background: var(--amarillo)"></span>
+          <span class="recent-text">Humedad baja en sector B</span>
+          <span class="recent-time">hace 1 h</span>
+        </li>
+        <li class="recent-item">
+          <span class="recent-dot" style="background: var(--azul)"></span>
+          <span class="recent-text">Riego automático ejecutado</span>
+          <span class="recent-time">hace 3 h</span>
+        </li>
+        <li class="recent-item">
+          <span class="recent-dot" style="background: var(--verde-vivo)"></span>
+          <span class="recent-text">Sistema reiniciado correctamente</span>
+          <span class="recent-time">ayer</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚡ Estado de sistemas</div>
+      <ul class="recent-list">
+        <li class="recent-item">
+          <span class="recent-dot" style="background: var(--verde-vivo)"></span>
+          <span class="recent-text">Sistema de riego</span>
+          <span class="badge badge-green">Activo</span>
+        </li>
+        <li class="recent-item">
+          <span class="recent-dot" style="background: var(--verde-vivo)"></span>
+          <span class="recent-text">Ventilación</span>
+          <span class="badge badge-green">Activo</span>
+        </li>
+        <li class="recent-item">
+          <span class="recent-dot" style="background: var(--amarillo)"></span>
+          <span class="recent-text">Iluminación suplementaria</span>
+          <span class="badge badge-yellow">En espera</span>
+        </li>
+        <li class="recent-item">
+          <span class="recent-dot" style="background: var(--rojo)"></span>
+          <span class="recent-text">Sensor CO₂</span>
+          <span class="badge badge-red">Sin señal</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends "private/layoutp.html" %}
+{% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/private/dashboard.css') }}">
+{% endblock %}
+{% block content %}
+<div class="dash-topbar">
+  <div class="topbar-left">
+    <span class="topbar-page-title">Historial</span>
+    <span class="topbar-breadcrumb">Invernadero ProA · Registros históricos</span>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-pill"><span class="dot"></span>Últimas 24 h</div>
+  </div>
+</div>
+
+<div class="dash-content">
+  <div class="page-heading">
+    <h1>Historial del invernadero</h1>
+    <p>Registro cronológico de todas las lecturas y eventos del sistema.</p>
+  </div>
+
+  <div class="card">
+    <div class="historial-table-wrap">
+      <table class="historial-table">
+        <thead>
+          <tr>
+            <th>Fecha / Hora</th>
+            <th>Sensor</th>
+            <th>Valor</th>
+            <th>Zona</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>10/07/2025 14:32</td>
+            <td>🌡️ Temperatura</td>
+            <td>26.1 °C</td>
+            <td>Zona A</td>
+            <td><span class="badge badge-red">⚠ Alerta</span></td>
+          </tr>
+          <tr>
+            <td>10/07/2025 14:15</td>
+            <td>💧 Humedad rel.</td>
+            <td>65 %</td>
+            <td>Zona A</td>
+            <td><span class="badge badge-green">Normal</span></td>
+          </tr>
+          <tr>
+            <td>10/07/2025 13:50</td>
+            <td>🌊 Humedad suelo</td>
+            <td>48 %</td>
+            <td>Zona B</td>
+            <td><span class="badge badge-yellow">Bajo</span></td>
+          </tr>
+          <tr>
+            <td>10/07/2025 13:30</td>
+            <td>🌬️ Viento</td>
+            <td>2.1 m/s</td>
+            <td>Exterior</td>
+            <td><span class="badge badge-green">Normal</span></td>
+          </tr>
+          <tr>
+            <td>10/07/2025 12:00</td>
+            <td>☀️ Luminosidad</td>
+            <td>1240 lux</td>
+            <td>Sector techo</td>
+            <td><span class="badge badge-green">Normal</span></td>
+          </tr>
+          <tr>
+            <td>10/07/2025 11:45</td>
+            <td>🧪 pH suelo</td>
+            <td>6.6 pH</td>
+            <td>Zona C</td>
+            <td><span class="badge badge-green">Óptimo</span></td>
+          </tr>
+          <tr>
+            <td>10/07/2025 10:00</td>
+            <td>💧 Humedad rel.</td>
+            <td>58 %</td>
+            <td>Zona A</td>
+            <td><span class="badge badge-yellow">Bajo</span></td>
+          </tr>
+          <tr>
+            <td>10/07/2025 09:30</td>
+            <td>🌡️ Temperatura</td>
+            <td>21.4 °C</td>
+            <td>Zona A</td>
+            <td><span class="badge badge-green">Normal</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

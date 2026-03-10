@@ -1,0 +1,14 @@
+{% extends "public/layout.html" %}
+
+{% block page_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/public/app.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="index">
+    <h1>Bienvenido a vivero biotecnologico</h1>
+    <h2>Vivero de Escuela ProA capital</h2>
+    <p>¡Bienvenido a nuestro proyecto mezclando la tecnología con la naturaleza!</p>
+    <button onclick="window.location.href='/informacion'" class="botonproyecto">Acerca del proyecto</button>
+</div>
+{% endblock %}

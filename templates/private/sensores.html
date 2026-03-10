@@ -1,0 +1,90 @@
+{% extends "private/layoutp.html" %}
+{% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/private/dashboard.css') }}">
+{% endblock %}
+{% block content %}
+<div class="dash-topbar">
+  <div class="topbar-left">
+    <span class="topbar-page-title">Sensores</span>
+    <span class="topbar-breadcrumb">Invernadero ProA · Monitoreo en tiempo real</span>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-pill"><span class="dot"></span>12 sensores en línea</div>
+  </div>
+</div>
+
+<div class="dash-content">
+  <div class="page-heading">
+    <h1>Sensores del invernadero</h1>
+    <p>Lecturas en tiempo real de todos los sensores instalados.</p>
+  </div>
+
+  <div class="sensor-grid stagger">
+
+    <div class="card sensor-card">
+      <div class="sensor-icon-wrap">🌡️</div>
+      <div class="sensor-name">Temperatura</div>
+      <div><span class="sensor-value">24.3</span><span class="sensor-unit"> °C</span></div>
+      <div class="sensor-bar progress-bar"><div class="progress-fill" style="width:61%"></div></div>
+      <div class="sensor-status"><span style="color:var(--verde-vivo)">●</span> Normal · Zona A</div>
+    </div>
+
+    <div class="card sensor-card">
+      <div class="sensor-icon-wrap">💧</div>
+      <div class="sensor-name">Humedad relativa</div>
+      <div><span class="sensor-value">68</span><span class="sensor-unit"> %</span></div>
+      <div class="sensor-bar progress-bar"><div class="progress-fill" style="width:68%; background: linear-gradient(to right,#1a6080,#4fa8c8)"></div></div>
+      <div class="sensor-status"><span style="color:var(--verde-vivo)">●</span> Normal · Zona A</div>
+    </div>
+
+    <div class="card sensor-card">
+      <div class="sensor-icon-wrap">☀️</div>
+      <div class="sensor-name">Luminosidad</div>
+      <div><span class="sensor-value">840</span><span class="sensor-unit"> lux</span></div>
+      <div class="sensor-bar progress-bar"><div class="progress-fill" style="width:42%; background:linear-gradient(to right,#7a5500,#d4a832)"></div></div>
+      <div class="sensor-status"><span style="color:var(--amarillo)">●</span> Bajo · Sector techo</div>
+    </div>
+
+    <div class="card sensor-card">
+      <div class="sensor-icon-wrap">🌊</div>
+      <div class="sensor-name">Humedad del suelo</div>
+      <div><span class="sensor-value">52</span><span class="sensor-unit"> %</span></div>
+      <div class="sensor-bar progress-bar"><div class="progress-fill" style="width:52%; background:linear-gradient(to right,#1a6080,#4fa8c8)"></div></div>
+      <div class="sensor-status"><span style="color:var(--verde-vivo)">●</span> Normal · Zona B</div>
+    </div>
+
+    <div class="card sensor-card">
+      <div class="sensor-icon-wrap">💨</div>
+      <div class="sensor-name">CO₂</div>
+      <div><span class="sensor-value">—</span><span class="sensor-unit"> ppm</span></div>
+      <div class="sensor-bar progress-bar"><div class="progress-fill" style="width:0%; background: var(--rojo)"></div></div>
+      <div class="sensor-status"><span style="color:var(--rojo)">●</span> Sin señal</div>
+    </div>
+
+    <div class="card sensor-card">
+      <div class="sensor-icon-wrap">🌬️</div>
+      <div class="sensor-name">Velocidad del viento</div>
+      <div><span class="sensor-value">1.4</span><span class="sensor-unit"> m/s</span></div>
+      <div class="sensor-bar progress-bar"><div class="progress-fill" style="width:14%"></div></div>
+      <div class="sensor-status"><span style="color:var(--verde-vivo)">●</span> Normal · Exterior</div>
+    </div>
+
+    <div class="card sensor-card">
+      <div class="sensor-icon-wrap">🧪</div>
+      <div class="sensor-name">pH del suelo</div>
+      <div><span class="sensor-value">6.8</span><span class="sensor-unit"> pH</span></div>
+      <div class="sensor-bar progress-bar"><div class="progress-fill" style="width:68%"></div></div>
+      <div class="sensor-status"><span style="color:var(--verde-vivo)">●</span> Óptimo · Zona C</div>
+    </div>
+
+    <div class="card sensor-card">
+      <div class="sensor-icon-wrap">🔋</div>
+      <div class="sensor-name">Batería nodos</div>
+      <div><span class="sensor-value">87</span><span class="sensor-unit"> %</span></div>
+      <div class="sensor-bar progress-bar"><div class="progress-fill" style="width:87%"></div></div>
+      <div class="sensor-status"><span style="color:var(--verde-vivo)">●</span> OK · Todos los nodos</div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "private/layoutp.html" %}
+{% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/private/dashboard.css') }}">
+{% endblock %}
+{% block content %}
+<div class="dash-topbar">
+  <div class="topbar-left">
+    <span class="topbar-page-title">Cultivos</span>
+    <span class="topbar-breadcrumb">Invernadero ProA · Estado de cultivos</span>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-pill"><span class="dot"></span>6 cultivos activos</div>
+  </div>
+</div>
+
+<div class="dash-content">
+  <div class="page-heading">
+    <h1>Cultivos del invernadero</h1>
+    <p>Seguimiento del estado y ciclo de vida de cada cultivo.</p>
+  </div>
+
+  <div class="grid-2 stagger">
+
+    <div class="card cultivo-card">
+      <div class="cultivo-emoji">🍅</div>
+      <div class="cultivo-info">
+        <div class="cultivo-name">Tomate cherry</div>
+        <div class="cultivo-meta">Zona A · Sembrado 15/05/2025</div>
+        <div class="cultivo-progress-label"><span>Ciclo de crecimiento</span><span>78%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div>
+        <span class="badge badge-green" style="margin-top:10px">En floración</span>
+      </div>
+    </div>
+
+    <div class="card cultivo-card">
+      <div class="cultivo-emoji">🥬</div>
+      <div class="cultivo-info">
+        <div class="cultivo-name">Lechuga mantecosa</div>
+        <div class="cultivo-meta">Zona B · Sembrado 01/06/2025</div>
+        <div class="cultivo-progress-label"><span>Ciclo de crecimiento</span><span>45%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:45%"></div></div>
+        <span class="badge badge-blue" style="margin-top:10px">En crecimiento</span>
+      </div>
+    </div>
+
+    <div class="card cultivo-card">
+      <div class="cultivo-emoji">🌿</div>
+      <div class="cultivo-info">
+        <div class="cultivo-name">Albahaca</div>
+        <div class="cultivo-meta">Zona C · Sembrado 20/05/2025</div>
+        <div class="cultivo-progress-label"><span>Ciclo de crecimiento</span><span>92%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:92%"></div></div>
+        <span class="badge badge-green" style="margin-top:10px">Lista para cosechar</span>
+      </div>
+    </div>
+
+    <div class="card cultivo-card">
+      <div class="cultivo-emoji">🥕</div>
+      <div class="cultivo-info">
+        <div class="cultivo-name">Zanahoria</div>
+        <div class="cultivo-meta">Zona B · Sembrado 10/06/2025</div>
+        <div class="cultivo-progress-label"><span>Ciclo de crecimiento</span><span>28%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:28%"></div></div>
+        <span class="badge badge-yellow" style="margin-top:10px">Germinación</span>
+      </div>
+    </div>
+
+    <div class="card cultivo-card">
+      <div class="cultivo-emoji">🌶️</div>
+      <div class="cultivo-info">
+        <div class="cultivo-name">Pimiento rojo</div>
+        <div class="cultivo-meta">Zona A · Sembrado 12/05/2025</div>
+        <div class="cultivo-progress-label"><span>Ciclo de crecimiento</span><span>85%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div>
+        <span class="badge badge-green" style="margin-top:10px">En floración</span>
+      </div>
+    </div>
+
+    <div class="card cultivo-card">
+      <div class="cultivo-emoji">🌱</div>
+      <div class="cultivo-info">
+        <div class="cultivo-name">Espinaca</div>
+        <div class="cultivo-meta">Zona C · Sembrado 25/06/2025</div>
+        <div class="cultivo-progress-label"><span>Ciclo de crecimiento</span><span>15%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:15%"></div></div>
+        <span class="badge badge-blue" style="margin-top:10px">Recién sembrada</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

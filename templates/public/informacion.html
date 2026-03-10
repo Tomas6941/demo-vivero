@@ -1,0 +1,14 @@
+{% extends "public/layout.html" %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/proyecto.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="index">
+    <h1>Acerca del proyecto</h1>
+    <h2>Equipo de desarrollo</h2>
+    <p>Este proyecto fue realizado por estudiantes de todos los cursos de la Escuela PRoA capital.</p>
+    <p>El objetivo de este proyecto es...</p>
+</div>
+{% endblock %}

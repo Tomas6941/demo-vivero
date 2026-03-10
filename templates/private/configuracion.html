@@ -1,0 +1,122 @@
+{% extends "private/layoutp.html" %}
+{% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/private/dashboard.css') }}">
+{% endblock %}
+{% block content %}
+<div class="dash-topbar">
+  <div class="topbar-left">
+    <span class="topbar-page-title">Configuración</span>
+    <span class="topbar-breadcrumb">Invernadero ProA · Ajustes del sistema</span>
+  </div>
+</div>
+
+<div class="dash-content">
+  <div class="page-heading">
+    <h1>Configuración del sistema</h1>
+    <p>Ajustá los parámetros de monitoreo y automatización del invernadero.</p>
+  </div>
+
+  <!-- Umbrales -->
+  <div class="config-section">
+    <div class="config-section-title">🌡️ Umbrales de sensores</div>
+
+    <div class="config-row">
+      <div>
+        <div class="config-row-label">Temperatura máxima</div>
+        <div class="config-row-desc">Se genera alerta si se supera este valor.</div>
+      </div>
+      <input class="config-input" type="number" value="25" step="0.5"> °C
+    </div>
+
+    <div class="config-row">
+      <div>
+        <div class="config-row-label">Temperatura mínima</div>
+        <div class="config-row-desc">Se activa calefacción si baja de este valor.</div>
+      </div>
+      <input class="config-input" type="number" value="15" step="0.5"> °C
+    </div>
+
+    <div class="config-row">
+      <div>
+        <div class="config-row-label">Humedad mínima del suelo</div>
+        <div class="config-row-desc">Umbral para activar riego automático.</div>
+      </div>
+      <input class="config-input" type="number" value="55"> %
+    </div>
+  </div>
+
+  <!-- Automatización -->
+  <div class="config-section">
+    <div class="config-section-title">⚡ Automatización</div>
+
+    <div class="config-row">
+      <div>
+        <div class="config-row-label">Riego automático</div>
+        <div class="config-row-desc">Activar riego cuando la humedad baje del umbral.</div>
+      </div>
+      <div class="toggle-wrap">
+        <label class="toggle">
+          <input type="checkbox" checked>
+          <span class="toggle-slider"></span>
+        </label>
+        Activado
+      </div>
+    </div>
+
+    <div class="config-row">
+      <div>
+        <div class="config-row-label">Ventilación automática</div>
+        <div class="config-row-desc">Encender ventiladores si temperatura supera el máximo.</div>
+      </div>
+      <div class="toggle-wrap">
+        <label class="toggle">
+          <input type="checkbox" checked>
+          <span class="toggle-slider"></span>
+        </label>
+        Activado
+      </div>
+    </div>
+
+    <div class="config-row">
+      <div>
+        <div class="config-row-label">Alertas por email</div>
+        <div class="config-row-desc">Enviar notificaciones al correo configurado.</div>
+      </div>
+      <div class="toggle-wrap">
+        <label class="toggle">
+          <input type="checkbox">
+          <span class="toggle-slider"></span>
+        </label>
+        Desactivado
+      </div>
+    </div>
+  </div>
+
+  <!-- Sistema -->
+  <div class="config-section">
+    <div class="config-section-title">🔧 Sistema</div>
+
+    <div class="config-row">
+      <div>
+        <div class="config-row-label">Intervalo de lectura de sensores</div>
+        <div class="config-row-desc">Frecuencia de actualización de datos (en segundos).</div>
+      </div>
+      <input class="config-input" type="number" value="30"> seg
+    </div>
+
+    <div class="config-row">
+      <div>
+        <div class="config-row-label">Correo para alertas</div>
+        <div class="config-row-desc">Dirección donde se enviarán las notificaciones.</div>
+      </div>
+      <input class="config-input" type="email" placeholder="admin@proa.edu.ar">
+    </div>
+  </div>
+
+  <div style="display:flex; gap:12px; margin-top:8px">
+    <button class="btn-primary">Guardar cambios</button>
+    <button class="btn-danger">Restablecer valores predeterminados</button>
+  </div>
+
+</div>
+{% endblock %}

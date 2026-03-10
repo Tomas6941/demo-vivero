@@ -1,0 +1,104 @@
+{% extends "private/layoutp.html" %}
+{% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/private/dashboard.css') }}">
+{% endblock %}
+{% block content %}
+<div class="dash-topbar">
+  <div class="topbar-left">
+    <span class="topbar-page-title">Control</span>
+    <span class="topbar-breadcrumb">Invernadero ProA · Control de sistemas</span>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-pill"><span class="dot"></span>4 sistemas activos</div>
+  </div>
+</div>
+
+<div class="dash-content">
+  <div class="page-heading">
+    <h1>Control del invernadero</h1>
+    <p>Activá y desactivá los sistemas del invernadero manualmente.</p>
+  </div>
+
+  <div class="control-grid stagger">
+
+    <div class="card control-card">
+      <div class="control-icon">💧</div>
+      <div class="control-name">Sistema de riego</div>
+      <div class="control-desc">Riego automático por goteo para todas las zonas.</div>
+      <div class="toggle-wrap">
+        <label class="toggle">
+          <input type="checkbox" checked>
+          <span class="toggle-slider"></span>
+        </label>
+        Encendido
+      </div>
+    </div>
+
+    <div class="card control-card">
+      <div class="control-icon">💨</div>
+      <div class="control-name">Ventilación</div>
+      <div class="control-desc">Control de ventiladores para circulación de aire.</div>
+      <div class="toggle-wrap">
+        <label class="toggle">
+          <input type="checkbox" checked>
+          <span class="toggle-slider"></span>
+        </label>
+        Encendido
+      </div>
+    </div>
+
+    <div class="card control-card">
+      <div class="control-icon">💡</div>
+      <div class="control-name">Iluminación LED</div>
+      <div class="control-desc">Luces suplementarias para días con baja luminosidad.</div>
+      <div class="toggle-wrap">
+        <label class="toggle">
+          <input type="checkbox">
+          <span class="toggle-slider"></span>
+        </label>
+        Apagado
+      </div>
+    </div>
+
+    <div class="card control-card">
+      <div class="control-icon">🌡️</div>
+      <div class="control-name">Calefacción</div>
+      <div class="control-desc">Sistema de calor para noches frías.</div>
+      <div class="toggle-wrap">
+        <label class="toggle">
+          <input type="checkbox">
+          <span class="toggle-slider"></span>
+        </label>
+        Apagado
+      </div>
+    </div>
+
+    <div class="card control-card">
+      <div class="control-icon">🚿</div>
+      <div class="control-name">Nebulizadores</div>
+      <div class="control-desc">Nebulización para aumentar humedad ambiental.</div>
+      <div class="toggle-wrap">
+        <label class="toggle">
+          <input type="checkbox" checked>
+          <span class="toggle-slider"></span>
+        </label>
+        Encendido
+      </div>
+    </div>
+
+    <div class="card control-card">
+      <div class="control-icon">🪟</div>
+      <div class="control-name">Apertura de ventanas</div>
+      <div class="control-desc">Control automático de ventanas cenitales.</div>
+      <div class="toggle-wrap">
+        <label class="toggle">
+          <input type="checkbox">
+          <span class="toggle-slider"></span>
+        </label>
+        Cerradas
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
