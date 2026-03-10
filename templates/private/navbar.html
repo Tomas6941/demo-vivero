@@ -1,330 +1,75 @@
-/* ================================================================
-   NAVBAR.CSS (privada) — Sidebar responsive
-   Desktop : hover en borde izquierdo
-   Móvil   : botón hamburguesa fijo
-   ================================================================ */
+<!-- Botón hamburguesa — solo visible en táctil/móvil -->
+<button class="sidebar-toggle" id="sidebarToggle" aria-label="Abrir menú">
+  <span></span><span></span><span></span>
+</button>
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=DM+Sans:wght@300;400;500&display=swap');
+<!-- Overlay oscuro detrás del sidebar en móvil -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-:root {
-  --sw:          240px;   /* sidebar width */
-  --sbg:         rgba(10, 16, 5, 0.98);
-  --acento:      #a8d44f;
-  --acento-dim:  rgba(168,212,79,0.48);
-  --vm:          #3D5026;
-  --texto:       #ddedb8;
-  --texto-dim:   rgba(200,220,160,0.65);
-  --texto-muted: rgba(160,185,110,0.42);
-  --borde:       rgba(122,179,58,0.13);
-  --rojo:        #e05858;
-  --ease:        0.28s cubic-bezier(.4,0,.2,1);
-}
+<aside class="sidebar" id="sidebar">
 
-/* ── Reset base ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <!-- Trigger hover — solo desktop -->
+  <div class="sidebar-trigger" id="sidebarTrigger"></div>
 
-html, body {
-  min-height: 100%;
-  min-height: 100dvh;
-}
+  <a href="{{ url_for('dashboard') }}" class="sidebar-logo">
+    <div class="sidebar-logo-icon">🌿</div>
+    <div>
+      <div class="sidebar-logo-text">ProA Invernadero</div>
+      <div class="sidebar-logo-sub">Panel de control</div>
+    </div>
+  </a>
 
-body {
-  font-family: 'DM Sans', system-ui, sans-serif;
-  background: #0e1a08;
-  color: var(--texto);
-  /* sin overflow-x roto */
-  overflow-x: hidden;
-}
+  <nav class="sidebar-nav">
+    <div class="sidebar-section-label">Principal</div>
 
-/* ── Layout wrapper ── */
-.dash-layout {
-  display: flex;
-  min-height: 100dvh;
-}
+    <a href="{{ url_for('dashboard') }}"
+       class="sidebar-link {% if request.endpoint == 'dashboard' %}active{% endif %}">
+      <span class="s-icon">📊</span><span class="s-label">Dashboard</span>
+    </a>
+    <a href="{{ url_for('sensores') }}"
+       class="sidebar-link {% if request.endpoint == 'sensores' %}active{% endif %}">
+      <span class="s-icon">🌡️</span><span class="s-label">Sensores</span>
+    </a>
+    <a href="{{ url_for('historial') }}"
+       class="sidebar-link {% if request.endpoint == 'historial' %}active{% endif %}">
+      <span class="s-icon">📋</span><span class="s-label">Historial</span>
+    </a>
 
-/* ── Main ── */
-.dash-main {
-  flex: 1;
-  min-width: 0;          /* evita que el flex hijo desborde */
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  /* Desktop: pequeño margen por el trigger de 4px */
-  margin-left: 4px;
-  transition: margin-left var(--ease);
-}
+    <div class="sidebar-section-label">Gestión</div>
 
-/* ════════════════════════
-   SIDEBAR
-   ════════════════════════ */
-.sidebar {
-  position: fixed;
-  top: 0; left: 0;
-  width: var(--sw);
-  height: 100dvh;
-  background: var(--sbg);
-  border-right: 1px solid var(--borde);
-  display: flex;
-  flex-direction: column;
-  z-index: 300;
-  overflow: hidden;
-  /* Colapsado: solo asoma 4px */
-  transform: translateX(calc(-1 * var(--sw) + 4px));
-  transition: transform var(--ease), box-shadow var(--ease);
-}
+    <a href="{{ url_for('control') }}"
+       class="sidebar-link {% if request.endpoint == 'control' %}active{% endif %}">
+      <span class="s-icon">⚡</span><span class="s-label">Control</span>
+    </a>
+    <a href="{{ url_for('cultivos') }}"
+       class="sidebar-link {% if request.endpoint == 'cultivos' %}active{% endif %}">
+      <span class="s-icon">🌱</span><span class="s-label">Cultivos</span>
+    </a>
+    <a href="{{ url_for('alertas') }}"
+       class="sidebar-link {% if request.endpoint == 'alertas' %}active{% endif %}">
+      <span class="s-icon">🔔</span><span class="s-label">Alertas</span>
+      <span class="s-badge">2</span>
+    </a>
 
-/* Brillo top */
-.sidebar::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(to right, transparent, var(--acento-dim), transparent);
-  opacity: 0;
-  transition: opacity var(--ease);
-}
+    <div class="sidebar-section-label">Sistema</div>
 
-/* Pulso en el borde cuando está cerrado */
-.sidebar::after {
-  content: '';
-  position: absolute;
-  top: 50%; right: 0;
-  transform: translateY(-50%);
-  width: 3px; height: 56px;
-  background: linear-gradient(to bottom, transparent, var(--acento-dim), transparent);
-  border-radius: 2px;
-  animation: pulseEdge 2.5s ease-in-out infinite;
-}
+    <a href="{{ url_for('configuracion') }}"
+       class="sidebar-link {% if request.endpoint == 'configuracion' %}active{% endif %}">
+      <span class="s-icon">⚙️</span><span class="s-label">Configuración</span>
+    </a>
+  </nav>
 
-@keyframes pulseEdge {
-  0%,100% { opacity: .2; }
-  50%      { opacity: .8; }
-}
+  <div class="sidebar-footer">
+    <div class="sidebar-user">
+      <div class="sidebar-avatar">
+        {{ current_user.username[0].upper() if current_user else 'U' }}
+      </div>
+      <div class="sidebar-user-info">
+        <div class="sidebar-user-name">{{ current_user.username if current_user else 'Usuario' }}</div>
+        <div class="sidebar-user-role">Administrador</div>
+      </div>
+      <a href="{{ url_for('logout') }}" class="sidebar-logout" title="Cerrar sesión">⏻</a>
+    </div>
+  </div>
 
-/* Estado expandido */
-.sidebar.expanded,
-.sidebar:hover {
-  transform: translateX(0);
-  box-shadow: 8px 0 48px rgba(0,0,0,0.6);
-}
-.sidebar.expanded::before,
-.sidebar:hover::before { opacity: 1; }
-.sidebar.expanded::after,
-.sidebar:hover::after  { opacity: 0; animation: none; }
-
-/* Fade del contenido interno */
-.sidebar-logo,
-.sidebar-nav,
-.sidebar-footer {
-  opacity: 0;
-  transition: opacity 0.15s ease;
-}
-.sidebar.expanded .sidebar-logo,
-.sidebar.expanded .sidebar-nav,
-.sidebar.expanded .sidebar-footer,
-.sidebar:hover    .sidebar-logo,
-.sidebar:hover    .sidebar-nav,
-.sidebar:hover    .sidebar-footer {
-  opacity: 1;
-  transition-delay: 0.1s;
-}
-
-/* Trigger invisible desktop */
-.sidebar-trigger {
-  position: fixed;
-  top: 0; left: 0;
-  width: 18px; height: 100dvh;
-  z-index: 301;
-  cursor: pointer;
-}
-
-/* ════════════════════════
-   BOTÓN HAMBURGUESA
-   (solo móvil)
-   ════════════════════════ */
-.sidebar-toggle {
-  display: none;
-  position: fixed;
-  top: 14px; left: 14px;
-  z-index: 400;
-  width: 42px; height: 42px;
-  background: rgba(10,16,5,0.9);
-  border: 1px solid var(--borde);
-  border-radius: 10px;
-  cursor: pointer;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  padding: 0;
-  backdrop-filter: blur(8px);
-  transition: background var(--ease), border-color var(--ease);
-}
-
-.sidebar-toggle span {
-  display: block;
-  width: 20px; height: 2px;
-  background: var(--texto-dim);
-  border-radius: 2px;
-  transition: transform 0.25s, opacity 0.2s, width 0.2s;
-  transform-origin: center;
-}
-
-.sidebar-toggle.open { background: rgba(61,80,38,0.75); border-color: var(--acento-dim); }
-.sidebar-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.sidebar-toggle.open span:nth-child(2) { opacity: 0; width: 0; }
-.sidebar-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-/* Overlay */
-.sidebar-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(2px);
-  z-index: 299;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-.sidebar-overlay.visible { opacity: 1; }
-
-/* ════════════════════════
-   CONTENIDO DEL SIDEBAR
-   ════════════════════════ */
-.sidebar-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 22px 20px 18px;
-  border-bottom: 1px solid var(--borde);
-  text-decoration: none;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.sidebar-logo-icon {
-  width: 34px; height: 34px;
-  background: var(--vm);
-  border-radius: 9px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; flex-shrink: 0;
-  box-shadow: 0 0 12px rgba(122,179,58,0.22);
-}
-
-.sidebar-logo-text {
-  font-family: 'Playfair Display', serif;
-  font-size: .97rem; font-weight: 600;
-  color: var(--acento); line-height: 1.2;
-}
-
-.sidebar-logo-sub {
-  font-size: .66rem; color: var(--texto-muted);
-  font-weight: 300; letter-spacing: .04em;
-}
-
-.sidebar-nav {
-  flex: 1; padding: 14px 0;
-  overflow-y: auto; overflow-x: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: var(--borde) transparent;
-}
-
-.sidebar-section-label {
-  font-size: .64rem; font-weight: 600;
-  letter-spacing: .12em; text-transform: uppercase;
-  color: var(--texto-muted);
-  padding: 14px 20px 5px;
-  white-space: nowrap;
-}
-
-.sidebar-link {
-  display: flex; align-items: center; gap: 11px;
-  padding: 10px 20px;
-  text-decoration: none;
-  color: var(--texto-dim);
-  font-size: .875rem; font-weight: 400;
-  border-left: 2px solid transparent;
-  white-space: nowrap;
-  transition: background .16s, color .16s, border-color .16s;
-}
-
-.sidebar-link .s-icon { font-size: 1.05rem; width: 22px; text-align: center; flex-shrink: 0; }
-.sidebar-link .s-label { flex: 1; }
-.sidebar-link:hover { color: var(--texto); background: rgba(122,179,58,0.07); }
-.sidebar-link.active { color: var(--acento); background: rgba(122,179,58,0.10); border-left-color: var(--acento); font-weight: 500; }
-.sidebar-link.active .s-icon { filter: drop-shadow(0 0 5px rgba(168,212,79,.5)); }
-
-.s-badge {
-  margin-left: auto;
-  background: var(--rojo); color: white;
-  font-size: .64rem; font-weight: 600;
-  padding: 2px 7px; border-radius: 50px; line-height: 1.5;
-}
-
-.sidebar-footer {
-  padding: 14px 18px;
-  border-top: 1px solid var(--borde);
-  white-space: nowrap; flex-shrink: 0;
-}
-
-.sidebar-user { display: flex; align-items: center; gap: 10px; }
-
-.sidebar-avatar {
-  width: 32px; height: 32px;
-  background: var(--vm); border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: .8rem; font-weight: 600;
-  color: var(--acento); flex-shrink: 0;
-}
-
-.sidebar-user-info { flex: 1; overflow: hidden; }
-.sidebar-user-name { font-size: .82rem; font-weight: 500; color: var(--texto); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.sidebar-user-role { font-size: .67rem; color: var(--texto-muted); }
-
-.sidebar-logout { color: var(--texto-muted); text-decoration: none; font-size: 1rem; transition: color .18s; }
-.sidebar-logout:hover { color: var(--rojo); }
-
-/* ════════════════════════
-   RESPONSIVE
-   ════════════════════════ */
-
-/* ── Por defecto: botón oculto (se activa solo en touch via JS) ── */
-.sidebar-toggle  { display: none; }
-.sidebar-overlay { display: none; }
-
-/* ══════════════════════════════════════════════════
-   Modo TOUCH — clase agregada por JS al <html>
-   cuando se detecta dispositivo táctil real
-   ══════════════════════════════════════════════════ */
-html.is-touch .sidebar-toggle  { display: flex; }
-html.is-touch .sidebar-overlay { display: block; }
-html.is-touch .sidebar-trigger { display: none; }
-html.is-touch .dash-main       { margin-left: 0 !important; }
-html.is-touch .dash-topbar     { padding-left: 68px !important; }
-
-/* Sidebar entra desde afuera completamente en touch */
-html.is-touch .sidebar {
-  transform: translateX(-100%);
-}
-html.is-touch .sidebar::after { display: none; }
-
-html.is-touch .sidebar.expanded {
-  transform: translateX(0);
-  box-shadow: 8px 0 48px rgba(0,0,0,0.65);
-}
-
-/* Cancelar hover en touch — solo .expanded abre el sidebar */
-html.is-touch .sidebar:hover:not(.expanded) {
-  transform: translateX(-100%);
-  box-shadow: none;
-}
-html.is-touch .sidebar:hover:not(.expanded) .sidebar-logo,
-html.is-touch .sidebar:hover:not(.expanded) .sidebar-nav,
-html.is-touch .sidebar:hover:not(.expanded) .sidebar-footer {
-  opacity: 0;
-  transition-delay: 0s;
-}
-
-/* ── Desktop (sin touch): hover funciona, sin botón ── */
-html:not(.is-touch) .sidebar-toggle  { display: none !important; }
-html:not(.is-touch) .sidebar-overlay { display: none !important; }
-html:not(.is-touch) .dash-main       { margin-left: 4px; }
+</aside>
