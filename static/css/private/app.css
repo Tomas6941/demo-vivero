@@ -414,6 +414,10 @@ body {
   gap: 6px;
 }
 
+.metric-icon {
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+}
 
 .metric-value {
   font-family: 'Playfair Display', serif;
@@ -903,19 +907,79 @@ body {
 .stagger > *:nth-child(8) { animation-delay: 0.40s; }
 
 /* ── 14. Responsive ── */
-@media (max-width: 900px) {
-  :root { --sidebar-w: 0px; }
-  .sidebar { transform: translateX(-240px); }
-  .dash-main { margin-left: 0; }
+
+/* ── Tablet (769px – 1024px) ── */
+@media (max-width: 1024px) {
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
-  .grid-3 { grid-template-columns: repeat(2, 1fr); }
-  .dash-summary-grid { grid-template-columns: 1fr; }
+  .dash-content { padding: 24px 24px 48px; }
+  .dash-topbar  { padding: 16px 24px; }
 }
 
-@media (max-width: 600px) {
+/* ── Móvil y tablet pequeña (≤ 768px) ── */
+@media (max-width: 768px) {
+  /* Layout: el main ocupa todo el ancho */
+  .dash-main    { margin-left: 0 !important; }
   .dash-content { padding: 20px 16px 40px; }
-  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .dash-topbar  { padding: 14px 16px 14px 68px; } /* espacio para hamburguesa */
+
+  /* Grids */
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .dash-summary-grid { grid-template-columns: 1fr; }
+  .sensor-grid  { grid-template-columns: repeat(2, 1fr); }
+  .control-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Tipografía */
+  .page-heading h1 { font-size: 1.4rem; }
+  .metric-value    { font-size: 1.8rem; }
+  .topbar-page-title { font-size: 1.1rem; }
+
+  /* Ocultar breadcrumb en pantallas muy pequeñas */
+  .topbar-breadcrumb { display: none; }
+
+  /* Topbar pill más compacto */
+  .topbar-pill { font-size: .72rem; padding: 5px 10px; }
+}
+
+/* ── Móvil pequeño (≤ 480px) ── */
+@media (max-width: 480px) {
+  .grid-3, .grid-4  { grid-template-columns: 1fr; }
+  .sensor-grid      { grid-template-columns: 1fr; }
+  .control-grid     { grid-template-columns: 1fr; }
+  .dash-content     { padding: 16px 12px 36px; }
+
+  /* Cultivos apilados */
   .cultivo-card { flex-direction: column; }
-  .config-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .cultivo-emoji { width: 100%; justify-content: flex-start; }
+
+  /* Configuración */
+  .config-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
   .config-input { width: 100%; }
+
+  /* Botones del pie de config */
+  .config-footer-btns {
+    flex-direction: column;
+  }
+  .btn-primary, .btn-danger { width: 100%; text-align: center; }
+
+  /* Historial: tabla scrolleable */
+  .historial-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .historial-table { min-width: 520px; }
+
+  /* Alertas */
+  .alerta-item { flex-wrap: wrap; }
+  .alerta-time { width: 100%; text-align: right; margin-top: 4px; }
+
+  /* Métricas */
+  .metric-value { font-size: 1.6rem; }
+}
+
+/* ── Sin altura mínima rota en móvil ── */
+body, .dash-layout, .dash-main {
+  min-height: 100dvh; /* dynamic viewport height */
 }
