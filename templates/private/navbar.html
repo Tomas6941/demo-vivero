@@ -1,9 +1,16 @@
+<!-- Botón hamburguesa — solo visible en táctil/móvil -->
+<button class="sidebar-toggle" id="sidebarToggle" aria-label="Abrir menú">
+  <span></span><span></span><span></span>
+</button>
+
+<!-- Overlay oscuro detrás del sidebar en móvil -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
 <aside class="sidebar" id="sidebar">
 
-  <!-- Trigger invisible para hover -->
-  <div class="sidebar-trigger"></div>
+  <!-- Trigger hover — solo desktop -->
+  <div class="sidebar-trigger" id="sidebarTrigger"></div>
 
-  <!-- Logo -->
   <a href="{{ url_for('dashboard') }}" class="sidebar-logo">
     <div class="sidebar-logo-icon">🌿</div>
     <div>
@@ -12,47 +19,35 @@
     </div>
   </a>
 
-  <!-- Navegación -->
   <nav class="sidebar-nav">
-
     <div class="sidebar-section-label">Principal</div>
 
     <a href="{{ url_for('dashboard') }}"
        class="sidebar-link {% if request.endpoint == 'dashboard' %}active{% endif %}">
-      <span class="s-icon">📊</span>
-      <span class="s-label">Dashboard</span>
+      <span class="s-icon">📊</span><span class="s-label">Dashboard</span>
     </a>
-
     <a href="{{ url_for('sensores') }}"
        class="sidebar-link {% if request.endpoint == 'sensores' %}active{% endif %}">
-      <span class="s-icon">🌡️</span>
-      <span class="s-label">Sensores</span>
+      <span class="s-icon">🌡️</span><span class="s-label">Sensores</span>
     </a>
-
     <a href="{{ url_for('historial') }}"
        class="sidebar-link {% if request.endpoint == 'historial' %}active{% endif %}">
-      <span class="s-icon">📋</span>
-      <span class="s-label">Historial</span>
+      <span class="s-icon">📋</span><span class="s-label">Historial</span>
     </a>
 
     <div class="sidebar-section-label">Gestión</div>
 
     <a href="{{ url_for('control') }}"
        class="sidebar-link {% if request.endpoint == 'control' %}active{% endif %}">
-      <span class="s-icon">⚡</span>
-      <span class="s-label">Control</span>
+      <span class="s-icon">⚡</span><span class="s-label">Control</span>
     </a>
-
     <a href="{{ url_for('cultivos') }}"
        class="sidebar-link {% if request.endpoint == 'cultivos' %}active{% endif %}">
-      <span class="s-icon">🌱</span>
-      <span class="s-label">Cultivos</span>
+      <span class="s-icon">🌱</span><span class="s-label">Cultivos</span>
     </a>
-
     <a href="{{ url_for('alertas') }}"
        class="sidebar-link {% if request.endpoint == 'alertas' %}active{% endif %}">
-      <span class="s-icon">🔔</span>
-      <span class="s-label">Alertas</span>
+      <span class="s-icon">🔔</span><span class="s-label">Alertas</span>
       <span class="s-badge">2</span>
     </a>
 
@@ -60,22 +55,17 @@
 
     <a href="{{ url_for('configuracion') }}"
        class="sidebar-link {% if request.endpoint == 'configuracion' %}active{% endif %}">
-      <span class="s-icon">⚙️</span>
-      <span class="s-label">Configuración</span>
+      <span class="s-icon">⚙️</span><span class="s-label">Configuración</span>
     </a>
-
   </nav>
 
-  <!-- Usuario -->
   <div class="sidebar-footer">
     <div class="sidebar-user">
       <div class="sidebar-avatar">
         {{ current_user.username[0].upper() if current_user else 'U' }}
       </div>
       <div class="sidebar-user-info">
-        <div class="sidebar-user-name">
-          {{ current_user.username if current_user else 'Usuario' }}
-        </div>
+        <div class="sidebar-user-name">{{ current_user.username if current_user else 'Usuario' }}</div>
         <div class="sidebar-user-role">Administrador</div>
       </div>
       <a href="{{ url_for('logout') }}" class="sidebar-logout" title="Cerrar sesión">⏻</a>
