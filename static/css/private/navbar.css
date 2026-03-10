@@ -174,14 +174,17 @@ body {
 .sidebar-toggle.open span:nth-child(2) { opacity: 0; width: 0; }
 .sidebar-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Overlay */
+/* Overlay — detrás del sidebar, solo cubre el área fuera de él */
 .sidebar-overlay {
   display: none;
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: var(--sw);   /* empieza donde termina el sidebar */
+  right: 0;
+  bottom: 0;
   background: rgba(0,0,0,0.55);
   backdrop-filter: blur(2px);
-  z-index: 299;
+  z-index: 299;      /* debajo del sidebar (300) pero encima del contenido */
   opacity: 0;
   transition: opacity 0.25s ease;
 }
