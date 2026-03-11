@@ -1,14 +1,155 @@
 {% extends "public/layout.html" %}
-
 {% block page_css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/public/app.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/public/app.css') }}">
 {% endblock %}
-
 {% block content %}
-<div class="index">
-    <h1>Bienvenido a vivero biotecnologico</h1>
-    <h2>Vivero de Escuela ProA capital</h2>
-    <p>¡Bienvenido a nuestro proyecto mezclando la tecnología con la naturaleza!</p>
-    <button onclick="window.location.href='/informacion'" class="botonproyecto">Acerca del proyecto</button>
-</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="badge">🌿 Tecnología &amp; Naturaleza</span>
+    <h1>Vivero Biotecnológico<br><em>ProA Capital</em></h1>
+    <p class="hero-sub">Monitoreamos, analizamos y cuidamos nuestro invernadero escolar con sensores inteligentes y datos en tiempo real — donde la biología se encuentra con la ingeniería.</p>
+    <div class="hero-btns">
+      <button onclick="window.location.href='/informacion'" class="botonproyecto">Acerca del proyecto</button>
+      <button onclick="window.location.href='/login'" class="botonproyecto botonproyecto--outline">Acceder al sistema</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CÓMO FUNCIONA ══ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">⚙️ Cómo funciona</div>
+    <h2 class="section-title">Del sensor a la pantalla</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-icon">🌡️</div>
+        <h3>Sensado</h3>
+        <p>Sensores distribuidos por el invernadero miden temperatura, humedad, luminosidad y pH del suelo en tiempo real.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-icon">🖥️</div>
+        <h3>Procesamiento</h3>
+        <p>Una Raspberry Pi recopila los datos, los procesa y los envía al servidor mediante protocolos de comunicación IoT.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-icon">📊</div>
+        <h3>Visualización</h3>
+        <p>El dashboard web muestra gráficos, alertas y controles en tiempo real accesibles desde cualquier dispositivo.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-icon">⚡</div>
+        <h3>Acción</h3>
+        <p>El sistema activa automáticamente el riego, la ventilación o la iluminación según los umbrales configurados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CARACTERÍSTICAS ══ -->
+<section class="section section--alt">
+  <div class="section-inner">
+    <div class="section-label">✨ Características</div>
+    <h2 class="section-title">Un invernadero inteligente</h2>
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="feature-icon">🌡️</div>
+        <h3>Monitoreo en tiempo real</h3>
+        <p>Temperatura, humedad, luminosidad y pH registrados cada 30 segundos con alertas automáticas ante anomalías.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">💧</div>
+        <h3>Riego automatizado</h3>
+        <p>El sistema activa el riego por goteo automáticamente cuando la humedad del suelo baja del umbral configurado.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Acceso desde cualquier lugar</h3>
+        <p>Dashboard web responsive: consultá el estado del invernadero desde tu celular, tablet o computadora.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>Historial completo</h3>
+        <p>Todas las lecturas quedan registradas en base de datos para análisis histórico y seguimiento de tendencias.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🌱</div>
+        <h3>Gestión de cultivos</h3>
+        <p>Seguimiento del ciclo de vida de cada cultivo con alertas de cosecha y recomendaciones de cuidado.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <h3>Sistema de alertas</h3>
+        <p>Notificaciones en tiempo real ante condiciones críticas: temperatura fuera de rango, sensores sin señal y más.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ EQUIPO ══ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">👥 Equipo</div>
+    <h2 class="section-title">Hecho por estudiantes de ProA</h2>
+    <p class="section-desc">Este proyecto fue desarrollado de forma colaborativa por estudiantes de <strong>1° a 6° año</strong> de la Escuela ProA Capital, cada curso aportando desde su área de conocimiento.</p>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-icon">🔬</div>
+        <div class="team-year">1° y 2° año</div>
+        <h3>Investigación</h3>
+        <p>Relevamiento de necesidades del invernadero, estudio de especies vegetales y condiciones óptimas de cultivo.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-icon">🔌</div>
+        <div class="team-year">3° año</div>
+        <h3>Hardware</h3>
+        <p>Instalación y configuración de sensores, cableado del invernadero y montaje de la Raspberry Pi.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-icon">💻</div>
+        <div class="team-year">4° año</div>
+        <h3>Backend</h3>
+        <p>Desarrollo del servidor con Python y Flask, diseño de la base de datos y lógica de automatización.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-icon">🎨</div>
+        <div class="team-year">5° año</div>
+        <h3>Frontend</h3>
+        <p>Diseño e implementación del dashboard web, interfaz de usuario y visualización de datos.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-icon">📐</div>
+        <div class="team-year">6° año</div>
+        <h3>Coordinación</h3>
+        <p>Gestión del proyecto, integración de todos los módulos, documentación técnica y presentación final.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA FINAL ══ -->
+<section class="section section--cta">
+  <div class="cta-box">
+    <h2>¿Querés ver el sistema en acción?</h2>
+    <p>Accedé al dashboard para explorar los datos del invernadero en tiempo real.</p>
+    <button onclick="window.location.href='/login'" class="botonproyecto">Ingresar al sistema →</button>
+  </div>
+</section>
+
 {% endblock %}
