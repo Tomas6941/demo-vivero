@@ -1,14 +1,335 @@
 {% extends "public/layout.html" %}
-
 {% block page_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/proyecto.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/public/app.css') }}">
 {% endblock %}
-
 {% block content %}
-<div class="index">
-    <h1>Acerca del proyecto</h1>
-    <h2>Equipo de desarrollo</h2>
-    <p>Este proyecto fue realizado por estudiantes de todos los cursos de la Escuela PRoA capital.</p>
-    <p>El objetivo de este proyecto es...</p>
-</div>
+
+<div class="info-layout">
+
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="info-sidebar" id="infoSidebar">
+
+    <button class="info-sidebar-close" id="infoSidebarClose">✕</button>
+
+    <nav class="info-nav">
+      <div class="info-nav-section">EL PROYECTO</div>
+      <a href="#descripcion"  class="info-nav-link active">¿Qué es el proyecto?</a>
+      <a href="#objetivos"    class="info-nav-link">Objetivos</a>
+      <a href="#como-funciona" class="info-nav-link">Cómo funciona</a>
+
+      <div class="info-nav-section">TECNOLOGÍAS</div>
+      <a href="#hardware"     class="info-nav-link">Hardware</a>
+      <a href="#sensores"     class="info-nav-link">Sensores</a>
+      <a href="#software"     class="info-nav-link">Software</a>
+      <a href="#base-datos"   class="info-nav-link">Base de datos</a>
+
+      <div class="info-nav-section">EQUIPO</div>
+      <a href="#equipo"       class="info-nav-link">Estudiantes</a>
+      <a href="#roles"        class="info-nav-link">Roles por año</a>
+
+      <div class="info-nav-section">MÁS</div>
+      <a href="#galeria"      class="info-nav-link">Galería</a>
+      <a href="#contacto"     class="info-nav-link">Contacto</a>
+    </nav>
+  </aside>
+
+  <!-- Overlay móvil sidebar info -->
+  <div class="info-overlay" id="infoOverlay"></div>
+
+  <!-- ══ CONTENIDO PRINCIPAL ══ -->
+  <div class="info-content">
+
+    <!-- Botón abrir sidebar en móvil -->
+    <button class="info-sidebar-btn" id="infoSidebarBtn">☰ Índice</button>
+
+    <!-- Descripción -->
+    <section class="info-section" id="descripcion">
+      <span class="badge">📖 El proyecto</span>
+      <h1>¿Qué es el Vivero Biotecnológico?</h1>
+      <p>El Vivero Biotecnológico de la Escuela ProA Capital es un proyecto interdisciplinario que integra tecnología IoT, automatización y ciencias naturales para crear un invernadero inteligente gestionado por los propios estudiantes.</p>
+      <p>El sistema permite monitorear en tiempo real las condiciones ambientales del invernadero —temperatura, humedad, luminosidad y pH del suelo— y actuar sobre ellas automáticamente mediante actuadores controlados por software.</p>
+    </section>
+
+    <hr class="info-divider">
+
+    <!-- Objetivos -->
+    <section class="info-section" id="objetivos">
+      <h2>Objetivos del proyecto</h2>
+      <ul class="info-list">
+        <li>🎯 Desarrollar un sistema de monitoreo ambiental para el invernadero escolar.</li>
+        <li>🎯 Automatizar el riego, la ventilación y la iluminación según parámetros configurables.</li>
+        <li>🎯 Visualizar los datos en un dashboard web accesible desde cualquier dispositivo.</li>
+        <li>🎯 Registrar el historial completo de lecturas para análisis y aprendizaje.</li>
+        <li>🎯 Integrar conocimientos de hardware, software, biología y gestión de proyectos.</li>
+        <li>🎯 Generar documentación técnica completa como legado para futuros estudiantes.</li>
+      </ul>
+    </section>
+
+    <hr class="info-divider">
+
+    <!-- Cómo funciona -->
+    <section class="info-section" id="como-funciona">
+      <h2>¿Cómo funciona el sistema?</h2>
+      <p>El sistema opera en cuatro capas interconectadas:</p>
+      <div class="info-steps">
+        <div class="info-step">
+          <div class="info-step-n">1</div>
+          <div><strong>Capa física:</strong> Sensores DHT22, BH1750 y sensor de pH instalados en distintos sectores del invernadero capturan datos del entorno cada 30 segundos.</div>
+        </div>
+        <div class="info-step">
+          <div class="info-step-n">2</div>
+          <div><strong>Capa de procesamiento:</strong> Una Raspberry Pi 4 actúa como controlador central, recopila las lecturas via GPIO/I²C y ejecuta la lógica de automatización.</div>
+        </div>
+        <div class="info-step">
+          <div class="info-step-n">3</div>
+          <div><strong>Capa de servidor:</strong> Flask (Python) expone una API REST que almacena los datos en SQLite y sirve la interfaz web.</div>
+        </div>
+        <div class="info-step">
+          <div class="info-step-n">4</div>
+          <div><strong>Capa de presentación:</strong> El dashboard web muestra los datos en tiempo real con gráficos, alertas y controles de los actuadores.</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="info-divider">
+
+    <!-- Hardware -->
+    <section class="info-section" id="hardware">
+      <span class="badge">🔌 Tecnologías · Hardware</span>
+      <h2>Hardware utilizado</h2>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-icon">🖥️</div>
+          <h3>Raspberry Pi 4</h3>
+          <p>Controlador central del sistema. Gestiona sensores, actuadores y el servidor web desde un único dispositivo de bajo consumo.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon">⚡</div>
+          <h3>Arduino Uno</h3>
+          <p>Microcontrolador auxiliar para la lectura de sensores analógicos y control de relés de los actuadores físicos.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon">💧</div>
+          <h3>Bomba de agua</h3>
+          <p>Bomba peristáltica de 12V controlada por relé para el sistema de riego por goteo automatizado.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon">💨</div>
+          <h3>Ventiladores DC</h3>
+          <p>Ventiladores de 12V controlados por PWM para regulación de temperatura y circulación de aire.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="info-divider">
+
+    <!-- Sensores -->
+    <section class="info-section" id="sensores">
+      <span class="badge">🌡️ Tecnologías · Sensores</span>
+      <h2>Sensores instalados</h2>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-icon">🌡️</div>
+          <h3>DHT22</h3>
+          <p>Sensor digital de temperatura (−40 a 80 °C) y humedad relativa (0–100%). Alta precisión y comunicación de un solo cable.</p>
+          <span class="tech-badge">Temperatura · Humedad</span>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon">☀️</div>
+          <h3>BH1750</h3>
+          <p>Sensor de luz ambiental digital con interfaz I²C. Rango de 1 a 65535 lux, ideal para controlar la iluminación suplementaria.</p>
+          <span class="tech-badge">Luminosidad</span>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon">🧪</div>
+          <h3>Sensor pH analógico</h3>
+          <p>Electrodo de pH con módulo de acondicionamiento de señal. Rango 0–14 pH para monitoreo de la solución nutritiva del suelo.</p>
+          <span class="tech-badge">pH del suelo</span>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon">🌊</div>
+          <h3>Sensor capacitivo de humedad</h3>
+          <p>Sensor de humedad del suelo capacitivo (sin corrosión). Mide el contenido volumétrico de agua en la tierra de cada sector.</p>
+          <span class="tech-badge">Humedad del suelo</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="info-divider">
+
+    <!-- Software -->
+    <section class="info-section" id="software">
+      <span class="badge">💻 Tecnologías · Software</span>
+      <h2>Software y lenguajes</h2>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-icon">🐍</div>
+          <h3>Python 3</h3>
+          <p>Lenguaje principal del proyecto. Usado para la lógica del servidor, lectura de sensores, automatización y scripting general.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon">🌐</div>
+          <h3>Flask</h3>
+          <p>Framework web minimalista de Python. Maneja las rutas, la API REST y el renderizado de templates Jinja2.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon">🎨</div>
+          <h3>HTML / CSS / JS</h3>
+          <p>Frontend del dashboard construido con HTML semántico, CSS personalizado con variables y JavaScript vanilla.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon">📡</div>
+          <h3>Protocolo I²C / GPIO</h3>
+          <p>Protocolos de comunicación entre la Raspberry Pi y los sensores/actuadores del invernadero.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="info-divider">
+
+    <!-- Base de datos -->
+    <section class="info-section" id="base-datos">
+      <span class="badge">🗄️ Tecnologías · Datos</span>
+      <h2>Base de datos</h2>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-icon">🗄️</div>
+          <h3>SQLite</h3>
+          <p>Base de datos relacional embebida, sin servidor. Almacena todas las lecturas de sensores, usuarios, cultivos y configuraciones del sistema.</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon">🔗</div>
+          <h3>SQLAlchemy</h3>
+          <p>ORM de Python para la gestión de la base de datos. Facilita las consultas, migraciones y el modelo de datos del proyecto.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="info-divider">
+
+    <!-- Equipo -->
+    <section class="info-section" id="equipo">
+      <span class="badge">👥 Equipo</span>
+      <h2>Estudiantes de ProA Capital</h2>
+      <p>El proyecto fue desarrollado de forma colaborativa por estudiantes de <strong>primero a sexto año</strong>. Cada curso aportó desde su nivel de conocimiento y área de trabajo.</p>
+    </section>
+
+    <hr class="info-divider">
+
+    <!-- Roles -->
+    <section class="info-section" id="roles">
+      <h2>Roles por año</h2>
+      <div class="roles-list">
+        <div class="role-item">
+          <div class="role-year">1° y 2°</div>
+          <div class="role-body">
+            <strong>Investigación y ciencias naturales</strong>
+            <p>Estudio de las especies cultivadas, condiciones óptimas de crecimiento, relevamiento de necesidades del invernadero y documentación biológica del proyecto.</p>
+          </div>
+        </div>
+        <div class="role-item">
+          <div class="role-year">3°</div>
+          <div class="role-body">
+            <strong>Electrónica y hardware</strong>
+            <p>Selección, instalación y calibración de sensores. Cableado del invernadero, montaje de la Raspberry Pi y Arduino, y conexión de actuadores.</p>
+          </div>
+        </div>
+        <div class="role-item">
+          <div class="role-year">4°</div>
+          <div class="role-body">
+            <strong>Programación backend</strong>
+            <p>Desarrollo del servidor Flask, diseño del modelo de base de datos, lógica de automatización y API REST para la comunicación con el frontend.</p>
+          </div>
+        </div>
+        <div class="role-item">
+          <div class="role-year">5°</div>
+          <div class="role-body">
+            <strong>Diseño y frontend</strong>
+            <p>Diseño visual del dashboard, implementación de la interfaz web, visualización de datos y experiencia de usuario responsive.</p>
+          </div>
+        </div>
+        <div class="role-item">
+          <div class="role-year">6°</div>
+          <div class="role-body">
+            <strong>Coordinación y gestión</strong>
+            <p>Dirección técnica del proyecto, integración de todos los módulos, documentación final y presentación ante la comunidad educativa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="info-divider">
+
+    <!-- Galería -->
+    <section class="info-section" id="galeria">
+      <span class="badge">📸 Galería</span>
+      <h2>El invernadero en fotos</h2>
+      <div class="galeria-grid">
+        <div class="galeria-placeholder">📷<span>Foto del invernadero</span></div>
+        <div class="galeria-placeholder">📷<span>Sensores instalados</span></div>
+        <div class="galeria-placeholder">📷<span>Raspberry Pi</span></div>
+        <div class="galeria-placeholder">📷<span>Cultivos activos</span></div>
+        <div class="galeria-placeholder">📷<span>Panel de control</span></div>
+        <div class="galeria-placeholder">📷<span>Equipo trabajando</span></div>
+      </div>
+      <p class="galeria-note">* Las fotos se agregarán cuando el invernadero esté completamente instalado.</p>
+    </section>
+
+    <hr class="info-divider">
+
+    <!-- Contacto -->
+    <section class="info-section" id="contacto">
+      <span class="badge">✉️ Contacto</span>
+      <h2>¿Querés saber más?</h2>
+      <p>Para consultas sobre el proyecto, visitas al invernadero o colaboraciones, contactate con la Escuela ProA Capital.</p>
+      <div class="contacto-cards">
+        <div class="contacto-card">
+          <div class="contacto-icon">🏫</div>
+          <strong>Escuela ProA Capital</strong>
+          <span>Córdoba, Argentina</span>
+        </div>
+        <div class="contacto-card">
+          <div class="contacto-icon">✉️</div>
+          <strong>Email</strong>
+          <span>contacto@proacapital.edu.ar</span>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /info-content -->
+</div><!-- /info-layout -->
+
+<script>
+(function() {
+  const btn     = document.getElementById('infoSidebarBtn');
+  const sidebar = document.getElementById('infoSidebar');
+  const overlay = document.getElementById('infoOverlay');
+  const close   = document.getElementById('infoSidebarClose');
+
+  function open()  { sidebar.classList.add('open'); overlay.classList.add('open'); }
+  function shut()  { sidebar.classList.remove('open'); overlay.classList.remove('open'); }
+
+  if (btn)     btn.addEventListener('click', open);
+  if (close)   close.addEventListener('click', shut);
+  if (overlay) overlay.addEventListener('click', shut);
+
+  // Resaltar link activo al hacer scroll
+  const sections = document.querySelectorAll('.info-section[id]');
+  const links    = document.querySelectorAll('.info-nav-link');
+
+  window.addEventListener('scroll', function() {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+    });
+  }, { passive: true });
+
+  // Cerrar sidebar al navegar en móvil
+  links.forEach(l => l.addEventListener('click', shut));
+})();
+</script>
+
 {% endblock %}
